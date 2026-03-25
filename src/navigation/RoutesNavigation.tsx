@@ -1,12 +1,12 @@
 import React from 'react';
-import AppNavigation from './AppNavigation';
 import { NavigationContainer } from '@react-navigation/native';
 import { navigationRef } from '../utils/NavigationUtil';
+import RootNavigation from './RootNavigation';
 
 const RoutesNavigation = () => {
   return (
     <NavigationContainer ref={navigationRef}>
-      <AppNavigation />
+      <RootNavigation />
     </NavigationContainer>
   );
 };

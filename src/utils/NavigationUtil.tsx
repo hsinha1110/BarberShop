@@ -3,7 +3,7 @@ import {
   CommonActions,
   StackActions,
 } from '@react-navigation/native';
-import { RootStackParamList } from '../types/index';
+import { RootStackParamList } from '../types';
 
 export const navigationRef = createNavigationContainerRef<RootStackParamList>();
 
@@ -13,7 +13,7 @@ export function navigate<RouteName extends keyof RootStackParamList>(
   params?: RootStackParamList[RouteName],
 ) {
   if (navigationRef.isReady()) {
-    navigationRef.navigate(name as never, params as never);
+    navigationRef.navigate(name, params);
   }
 }
 
@@ -26,7 +26,7 @@ export function resetAndNavigate<RouteName extends keyof RootStackParamList>(
     navigationRef.dispatch(
       CommonActions.reset({
         index: 0,
-        routes: [{ name: name as string, params }],
+        routes: [{ name, params }],
       }),
     );
   }
@@ -45,6 +45,6 @@ export function push<RouteName extends keyof RootStackParamList>(
   params?: RootStackParamList[RouteName],
 ) {
   if (navigationRef.isReady()) {
-    navigationRef.dispatch(StackActions.push(name as string, params));
+    navigationRef.dispatch(StackActions.push(name, params));
   }
 }

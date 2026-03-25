@@ -4,6 +4,10 @@ export const Routes = {
   BOOKING: 'Booking',
   BOOKING_DETAILS: 'BookingDetails',
   PROFILE: 'Profile',
+  LOGIN: 'Login',
+  SIGN_UP: 'Signup',
+  AUTH_STACK: 'AuthStack',
+  APP_STACK: 'AppStack',
 } as const;
 
 export type RouteKeys = keyof typeof Routes;

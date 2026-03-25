@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { Colors } from '../../constants/Colors';
+import { scale } from 'react-native-size-matters';
 
 const styles = StyleSheet.create({
   button: {
@@ -12,10 +13,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   text: {
-    color: Colors.primary_black,
-    fontSize: 22,
+    color: Colors.primary_white,
+    fontSize: scale(16),
     fontWeight: 'bold',
-    textTransform: 'uppercase',
   },
 });
 export default styles;

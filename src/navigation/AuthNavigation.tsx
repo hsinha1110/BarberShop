@@ -1,11 +1,18 @@
-import { View, Text } from 'react-native';
 import React from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Routes } from '../constants/Routes';
+import * as Screens from '../screens';
+import { AuthStackParamList, RootStackParamList } from '../types';
 
-const AuthNavigation = () => {
+const Stack = createNativeStackNavigator<AuthStackParamList>();
+
+const AuthNavigation: React.FC = () => {
   return (
-    <View>
-      <Text>AuthNavigation</Text>
-    </View>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name={Routes.SPLASH} component={Screens.SplashScreen} />
+      <Stack.Screen name={Routes.LOGIN} component={Screens.LoginScreen} />
+      <Stack.Screen name={Routes.SIGN_UP} component={Screens.SignUpScreen} />
+    </Stack.Navigator>
   );
 };
 

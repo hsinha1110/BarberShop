@@ -69,7 +69,9 @@ const HomeScreen = () => {
           renderItem={({ item }) => (
             <Pressable
               onPress={() => {
-                navigate(Routes.BOOKING_DETAILS);
+                navigate(Routes.AUTH_STACK, {
+                  screen: Routes.LOGIN,
+                });
               }}
               style={styles.card}
             >
@@ -78,6 +80,7 @@ const HomeScreen = () => {
                   <Image source={item.image} style={styles.image} />
                 </View>
               </View>
+
               <View style={{ flex: 1 }}>
                 <CustomText style={styles.title}>{item.title}</CustomText>
                 <CustomText style={styles.desc}>{item.description}</CustomText>
