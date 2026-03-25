@@ -1,1 +1,3 @@
-export enum FONTS {}
+export enum FONTS {
+  PACIFICO_REGULAR = 'Pacifico-Regular',
+}

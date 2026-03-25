@@ -12,6 +12,7 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import { Colors } from '../../constants/Colors';
 import CustomText from '../text/CustomText';
 import { moderateScale } from 'react-native-size-matters';
+import styles from './styles';
 
 interface Props {
   label?: string;
@@ -44,11 +45,10 @@ const CustomInput: FC<Props> = ({
   numberOfLines = 1,
   editable = true,
   leftIcon,
-  autoCapitalize = 'none', // **default value**
+  autoCapitalize = 'none', 
 }) => {
   const [focused, setFocused] = useState(false);
   const [hidePassword, setHidePassword] = useState(secureTextEntry);
-
   return (
     <View style={containerStyle}>
       {label && (
@@ -56,7 +56,6 @@ const CustomInput: FC<Props> = ({
           {label}
         </CustomText>
       )}
-
       <View
         style={[
           styles.inputContainer,
@@ -68,15 +67,15 @@ const CustomInput: FC<Props> = ({
           <Ionicons
             name={leftIcon}
             size={20}
-            color={focused ? Colors.black : Colors.gray}
+            color={focused ? Colors.white : Colors.white}
             style={styles.leftIcon}
           />
         )}
-
         <TextInput
           value={value}
+          selectionColor={Colors.white} 
           placeholder={placeholder}
-          placeholderTextColor="gray"
+          placeholderTextColor={Colors.white}
           onChangeText={onChangeText}
           secureTextEntry={hidePassword}
           keyboardType={keyboardType}
@@ -97,7 +96,7 @@ const CustomInput: FC<Props> = ({
             <Ionicons
               name={hidePassword ? 'eye-off-outline' : 'eye-outline'}
               size={20}
-              color={Colors.gray}
+              color={Colors.white}
             />
           </TouchableOpacity>
         )}
@@ -111,51 +110,5 @@ const CustomInput: FC<Props> = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  label: {
-    marginBottom: 6,
-    color: Colors.black,
-  },
-  inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: Colors.black,
-    borderRadius: moderateScale(20),
-    backgroundColor: Colors.white,
-    paddingHorizontal: moderateScale(10),
-  },
-  focused: {
-    borderColor: Colors.black,
-  },
-  errorBorder: {
-    borderColor: Colors.error,
-  },
-  leftIcon: {
-    marginRight: moderateScale(8),
-  },
-  input: {
-    flex: 1,
-    height: moderateScale(48),
-    fontSize: RFValue(12),
-    color: Colors.black,
-    paddingVertical: moderateScale(10),
-    includeFontPadding: false,
-    textAlignVertical: 'center',
-  },
-  multiline: {
-    height: 'auto',
-    paddingVertical: moderateScale(10),
-    textAlignVertical: 'top',
-  },
-  eyeIcon: {
-    paddingLeft: moderateScale(8),
-  },
-  errorText: {
-    marginTop: moderateScale(4),
-    color: Colors.error,
-  },
-});
 
 export default CustomInput;

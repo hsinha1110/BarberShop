@@ -5,6 +5,7 @@ import {
   moderateVerticalScale,
   scale,
 } from 'react-native-size-matters';
+import { FONTS } from '../../../constants/Fonts';
 
 export default StyleSheet.create({
   container: {
@@ -18,10 +19,11 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   loginTextStyle: {
-    fontSize: scale(24),
+    fontSize: scale(28),
     color: 'white',
     fontWeight: 'bold',
-    bottom: moderateScale(30),
+    bottom: moderateScale(10),
+    fontFamily: FONTS.PACIFICO_REGULAR,
   },
   forgotTextStyle: {
     color: 'white',
@@ -40,7 +42,7 @@ export default StyleSheet.create({
     marginBottom: moderateVerticalScale(40),
   },
   inputStyle: {
-    marginBottom: moderateVerticalScale(20),
+    marginBottom: moderateVerticalScale(10),
   },
   btnStyle: {
     backgroundColor: Colors.primary_orange,

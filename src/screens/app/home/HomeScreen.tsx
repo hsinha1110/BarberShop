@@ -1,5 +1,5 @@
 import { FlatList, View, Image, ScrollView, Pressable } from 'react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './styles';
 import CustomText from '../../../components/text/CustomText';
 import { Colors } from '../../../constants/Colors';
@@ -7,8 +7,27 @@ import Divider from '../../../components/divider/Divider';
 import { Services } from '../../../constants/Data';
 import { navigate } from '../../../utils/NavigationUtil';
 import { Routes } from '../../../constants/Routes';
+import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 const HomeScreen = () => {
+  const [userName, setUserName] = useState('');
+
+  useEffect(() => {
+    const getUserData = async () => {
+      try {
+        const uid = auth().currentUser?.uid;
+        const userDoc = await firestore().collection('users').doc(uid).get();
+        if (userDoc.exists()) {
+          setUserName(userDoc.data()?.fullName || '');
+        }
+      } catch (error) {
+        console.log('User fetch error', error);
+      }
+    };
+    getUserData();
+  }, []);
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
@@ -17,7 +36,7 @@ const HomeScreen = () => {
         </CustomText>
 
         <CustomText variant="h2" style={styles.name}>
-          Albert
+          {userName || 'User'}
         </CustomText>
 
         <Divider

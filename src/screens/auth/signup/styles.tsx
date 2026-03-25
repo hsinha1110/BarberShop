@@ -5,6 +5,7 @@ import {
   scale,
 } from 'react-native-size-matters';
 import { Colors } from '../../../constants/Colors';
+import { FONTS } from '../../../constants/Fonts';
 
 export default StyleSheet.create({
   container: {
@@ -30,14 +31,15 @@ export default StyleSheet.create({
   },
 
   signUpTextStyle: {
-    fontSize: scale(24),
+    fontSize: scale(28),
     color: 'white',
     fontWeight: 'bold',
-    bottom: moderateScale(30),
+    fontFamily: FONTS.PACIFICO_REGULAR,
+    bottom: moderateScale(10),
   },
 
   inputStyle: {
-    marginBottom: moderateVerticalScale(12),
+    marginBottom: moderateVerticalScale(10),
   },
 
   alreadyUserTitle: {
@@ -76,7 +78,7 @@ export default StyleSheet.create({
     backgroundColor: Colors.primary_orange,
     width: '30%',
     borderRadius: moderateScale(40),
-    marginTop: moderateScale(100),
+    marginTop: moderateScale(20),
   },
   btnTitle: {
     fontSize: scale(16),

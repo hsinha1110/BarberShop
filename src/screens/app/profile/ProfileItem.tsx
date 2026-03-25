@@ -5,18 +5,16 @@ import CustomText from '../../../components/text/CustomText';
 import { Colors } from '../../../constants/Colors';
 import { moderateScale } from 'react-native-size-matters';
 
-const ProfileItem = ({ icon, title, value }: any) => {
+const ProfileItem = ({ icon, title, value, onPress }: any) => {
   return (
-    <Pressable style={styles.container}>
+    <Pressable style={styles.container} onPress={onPress}>
       <View style={styles.left}>
         <Ionicons name={icon} size={24} color={Colors.white} />
-
         <View>
           <CustomText style={styles.title}>{title}</CustomText>
-          {value && <CustomText style={styles.value}>{value}</CustomText>}
+          {value ? <CustomText style={styles.value}>{value}</CustomText> : null}
         </View>
       </View>
-
       <Ionicons name="chevron-forward" size={24} color={Colors.white} />
     </Pressable>
   );

@@ -50,12 +50,14 @@ export const profileData = [
   {
     id: '1',
     icon: 'person',
-    title: 'Himanshu ',
+    title: 'Name',
+    key: 'name',
   },
   {
     id: '2',
     icon: 'mail',
-    title: 'himanshusinha011@gmail.com',
+    title: 'Email',
+    key: 'email',
   },
   {
     id: '3',

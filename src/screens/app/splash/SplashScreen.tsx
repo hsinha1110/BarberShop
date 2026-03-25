@@ -10,7 +10,7 @@ import { Colors } from '../../../constants/Colors';
 
 const SplashScreen = () => {
   const handleBookNow = () => {
-    navigate(Routes.APP_STACK, { screen: Routes.HOME });
+    navigate(Routes.AUTH_STACK, { screen: Routes.LOGIN });
   };
 
   return (
@@ -31,7 +31,7 @@ const SplashScreen = () => {
 
         <CustomButton
           title="BOOK NOW"
-          onPress={() => handleBookNow()}
+          onPress={handleBookNow}
           style={{
             backgroundColor: Colors.white,
             marginTop: 20,
