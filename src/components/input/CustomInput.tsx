@@ -11,6 +11,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { Colors } from '../../constants/Colors';
 import CustomText from '../text/CustomText';
+import { moderateScale } from 'react-native-size-matters';
 
 interface Props {
   label?: string;
@@ -121,9 +122,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
     borderColor: Colors.black,
-    borderRadius: 10,
+    borderRadius: moderateScale(20),
     backgroundColor: Colors.white,
-    paddingHorizontal: 10,
+    paddingHorizontal: moderateScale(10),
   },
   focused: {
     borderColor: Colors.black,
@@ -132,27 +133,27 @@ const styles = StyleSheet.create({
     borderColor: Colors.error,
   },
   leftIcon: {
-    marginRight: 8,
+    marginRight: moderateScale(8),
   },
   input: {
     flex: 1,
-    height: 48,
+    height: moderateScale(48),
     fontSize: RFValue(12),
     color: Colors.black,
-    paddingVertical: 0,
+    paddingVertical: moderateScale(10),
     includeFontPadding: false,
     textAlignVertical: 'center',
   },
   multiline: {
     height: 'auto',
-    paddingVertical: 10,
+    paddingVertical: moderateScale(10),
     textAlignVertical: 'top',
   },
   eyeIcon: {
-    paddingLeft: 8,
+    paddingLeft: moderateScale(8),
   },
   errorText: {
-    marginTop: 4,
+    marginTop: moderateScale(4),
     color: Colors.error,
   },
 });

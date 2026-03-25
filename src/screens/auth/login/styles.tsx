@@ -44,7 +44,7 @@ export default StyleSheet.create({
   },
   btnStyle: {
     backgroundColor: Colors.primary_orange,
-    width: '50%',
+    width: '30%',
     borderRadius: moderateScale(40),
     marginTop: moderateScale(100),
   },

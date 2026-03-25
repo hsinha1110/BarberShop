@@ -37,3 +37,4 @@ export type BottomTabParamList = {
   Booking: undefined;
   Profile: undefined;
 };
+

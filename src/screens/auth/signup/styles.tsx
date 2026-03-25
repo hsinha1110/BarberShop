@@ -16,7 +16,7 @@ export default StyleSheet.create({
     position: 'absolute',
     top: 0,
     width: '100%',
-    height: 200,
+    height: moderateScale(200),
   },
 
   topBg: {
@@ -25,7 +25,7 @@ export default StyleSheet.create({
   },
 
   mainStyle: {
-    marginTop: 180,
+    marginTop: moderateScale(180),
     paddingHorizontal: 25,
   },
 
@@ -37,7 +37,7 @@ export default StyleSheet.create({
   },
 
   inputStyle: {
-    marginBottom: 12,
+    marginBottom: moderateVerticalScale(12),
   },
 
   alreadyUserTitle: {
@@ -52,16 +52,16 @@ export default StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     left: 0,
-    width: 160,
-    height: 160,
+    width: moderateScale(160),
+    height: moderateScale(160),
   },
 
   rightCircle: {
     position: 'absolute',
     bottom: 0,
     right: 0,
-    width: 160,
-    height: 160,
+    width: moderateScale(160),
+    height: moderateScale(160),
   },
   loginTitle: {
     color: Colors.primary_prink,
@@ -74,8 +74,8 @@ export default StyleSheet.create({
   },
   btnStyle: {
     backgroundColor: Colors.primary_orange,
-    width: '50%',
-    borderRadius: 40,
+    width: '30%',
+    borderRadius: moderateScale(40),
     marginTop: moderateScale(100),
   },
   btnTitle: {

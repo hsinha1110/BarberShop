@@ -10,7 +10,7 @@ import { Colors } from '../../../constants/Colors';
 
 const SplashScreen = () => {
   const handleBookNow = () => {
-    navigate(Routes.AUTH_STACK, { screen: Routes.LOGIN });
+    navigate(Routes.APP_STACK, { screen: Routes.HOME });
   };
 
   return (

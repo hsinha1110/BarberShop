@@ -46,3 +46,25 @@ export const Times = [
   '08:00 PM',
   '09:00 PM',
 ];
+export const profileData = [
+  {
+    id: '1',
+    icon: 'person',
+    title: 'Himanshu ',
+  },
+  {
+    id: '2',
+    icon: 'mail',
+    title: 'himanshusinha011@gmail.com',
+  },
+  {
+    id: '3',
+    icon: 'log-out',
+    title: 'Logout',
+  },
+  {
+    id: '4',
+    icon: 'trash',
+    title: 'Delete Account',
+  },
+];
