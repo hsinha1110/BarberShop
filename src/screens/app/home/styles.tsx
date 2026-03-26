@@ -106,6 +106,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: scale(16),
   },
+  containerStyle: {
+    padding: moderateScale(15),
+    paddingBottom: moderateScale(100),
+  },
 });
 
 export default styles;

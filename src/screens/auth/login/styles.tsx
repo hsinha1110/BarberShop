@@ -21,7 +21,6 @@ export default StyleSheet.create({
   loginTextStyle: {
     fontSize: scale(28),
     color: 'white',
-    fontWeight: 'bold',
     bottom: moderateScale(10),
     fontFamily: FONTS.PACIFICO_REGULAR,
   },
@@ -48,7 +47,7 @@ export default StyleSheet.create({
     backgroundColor: Colors.primary_orange,
     width: '30%',
     borderRadius: moderateScale(40),
-    marginTop: moderateScale(100),
+    marginTop: moderateScale(70),
   },
   btnTitle: {
     fontSize: scale(16),

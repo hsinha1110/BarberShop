@@ -1,4 +1,4 @@
-import { View, Image, FlatList } from 'react-native';
+import { View, Image, FlatList, Alert } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import styles from './styles';
 import CustomText from '../../../components/text/CustomText';
@@ -42,6 +42,46 @@ const ProfileScreen = () => {
     getUserData();
   }, []);
 
+  const confirmDelete = () => {
+    Alert.alert(
+      'Delete Account',
+      'This will permanently delete your account.',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        { text: 'Delete', style: 'destructive', onPress: deleteAccount },
+      ],
+    );
+  };
+
+  const deleteAccount = async () => {
+    const uid = auth().currentUser?.uid;
+
+    if (!uid) return;
+
+    try {
+      // delete user profile
+      await firestore().collection('users').doc(uid).delete();
+
+      // delete user bookings
+      const snapshot = await firestore()
+        .collection('Bookings')
+        .where('userId', '==', uid)
+        .get();
+
+      const batch = firestore().batch();
+
+      snapshot.docs.forEach(doc => {
+        batch.delete(doc.ref);
+      });
+
+      await batch.commit();
+
+      // delete auth account
+      await auth().currentUser?.delete();
+    } catch (error) {
+      console.log('Delete account error', error);
+    }
+  };
   return (
     <View style={styles.container}>
       <View style={{ height: 100, backgroundColor: Colors.jungle_green }}>
@@ -57,7 +97,7 @@ const ProfileScreen = () => {
       <View style={styles.userContainer}>
         <Image source={Images.barber1} style={styles.userImage} />
       </View>
-      
+
       <FlatList
         data={profileData}
         keyExtractor={item => item.id}
@@ -72,7 +112,13 @@ const ProfileScreen = () => {
               icon={item.icon}
               title={item.title}
               value={value}
-              onPress={item.title === 'Logout' ? handleLogout : undefined}
+              onPress={
+                item.title === 'Logout'
+                  ? handleLogout
+                  : item.title === 'Delete Account'
+                  ? confirmDelete
+                  : undefined
+              }
             />
           );
         }}

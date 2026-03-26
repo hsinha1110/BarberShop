@@ -58,7 +58,7 @@ const HomeScreen = () => {
           data={Services}
           keyExtractor={item => item.id}
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ padding: 15, paddingBottom: 100 }}
+          contentContainerStyle={styles.containerStyle}
           ListHeaderComponent={() => (
             <CustomText variant="h4" style={styles.servicesTitle}>
               Services

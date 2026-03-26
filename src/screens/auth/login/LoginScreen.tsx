@@ -122,7 +122,7 @@ const LoginScreen = () => {
           />
 
           <View style={styles.signUpStyle}>
-            <CustomText style={styles.newUserTitle}>New User</CustomText>
+            <CustomText style={styles.newUserTitle}>New User </CustomText>
 
             <Pressable onPress={handleSignUp}>
               <CustomText style={styles.signUpTitle}>SignUp?</CustomText>
