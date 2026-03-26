@@ -1,5 +1,10 @@
 import { StyleSheet } from 'react-native';
 import { Colors } from '../../../constants/Colors';
+import {
+  moderateScale,
+  moderateVerticalScale,
+  scale,
+} from 'react-native-size-matters';
 
 export default StyleSheet.create({
   container: {
@@ -8,8 +13,8 @@ export default StyleSheet.create({
   },
 
   headerArea: {
-    paddingHorizontal: 20,
-    paddingBottom: 20,
+    paddingHorizontal: moderateScale(20),
+    paddingBottom: moderateScale(20),
   },
 
   useContainer: {
@@ -18,32 +23,32 @@ export default StyleSheet.create({
   },
 
   userImage: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
+    width: moderateScale(80),
+    height: moderateScale(80),
+    borderRadius: moderateScale(40),
   },
 
   userInfo: {
-    marginLeft: 15,
+    marginLeft: moderateScale(15),
   },
 
   title: {
-    fontSize: 22,
+    fontSize: scale(22),
     color: Colors.white,
     fontWeight: '700',
   },
 
   subTitle: {
-    fontSize: 14,
+    fontSize: scale(14),
     color: '#ddd',
-    marginTop: 5,
+    marginTop: moderateVerticalScale(5),
   },
 
   slotTitle: {
-    fontSize: 18,
+    fontSize: scale(18),
     color: Colors.white,
     fontWeight: '600',
-    marginVertical: 20,
+    marginVertical: moderateVerticalScale(20),
   },
 
   divider: {
@@ -53,6 +58,6 @@ export default StyleSheet.create({
   bottomArea: {
     flex: 1,
     backgroundColor: Colors.white,
-    padding: 20,
+    padding: moderateScale(20),
   },
 });

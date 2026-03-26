@@ -1,14 +1,13 @@
-import { FlatList, View, Image, ScrollView, Pressable } from 'react-native';
+import { FlatList, View, ScrollView } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import styles from './styles';
 import CustomText from '../../../components/text/CustomText';
 import { Colors } from '../../../constants/Colors';
 import Divider from '../../../components/divider/Divider';
 import { Services } from '../../../constants/Data';
-import { navigate } from '../../../utils/NavigationUtil';
-import { Routes } from '../../../constants/Routes';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import ServiceItem from './ServicesItem';
 
 const HomeScreen = () => {
   const [userName, setUserName] = useState('');
@@ -31,10 +30,6 @@ const HomeScreen = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
-        <CustomText variant="h4" style={styles.greeting}>
-          Good Morning
-        </CustomText>
-
         <CustomText variant="h2" style={styles.name}>
           {userName || 'User'}
         </CustomText>
@@ -85,27 +80,7 @@ const HomeScreen = () => {
               style={styles.dividerStyle}
             />
           )}
-          renderItem={({ item }) => (
-            <Pressable
-              onPress={() => {
-                navigate(Routes.AUTH_STACK, {
-                  screen: Routes.LOGIN,
-                });
-              }}
-              style={styles.card}
-            >
-              <View style={styles.imageWrapper}>
-                <View style={styles.imageContainer}>
-                  <Image source={item.image} style={styles.image} />
-                </View>
-              </View>
-
-              <View style={{ flex: 1 }}>
-                <CustomText style={styles.title}>{item.title}</CustomText>
-                <CustomText style={styles.desc}>{item.description}</CustomText>
-              </View>
-            </Pressable>
-          )}
+          renderItem={({ item }) => <ServiceItem item={item} />}
         />
       </View>
     </ScrollView>

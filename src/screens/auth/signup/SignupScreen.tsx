@@ -1,25 +1,20 @@
 import React, { useState } from 'react';
 import { View, Pressable, Image } from 'react-native';
 import styles from './styles';
-
 import CustomText from '../../../components/text/CustomText';
 import CustomInput from '../../../components/input/CustomInput';
 import CustomButton from '../../../components/button/CustomButton';
-
 import { Images } from '../../../constants/Images';
-
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
-
 import { isValidEmail } from '../../../utils/ValidationUtil';
-import { goBack, navigate } from '../../../utils/NavigationUtil';
+import { goBack } from '../../../utils/NavigationUtil';
 
 const SignupScreen = () => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-
   const [nameError, setNameError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');

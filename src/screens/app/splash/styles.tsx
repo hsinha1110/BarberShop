@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { Colors } from '../../../constants/Colors';
+import { moderateVerticalScale } from 'react-native-size-matters';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   titleStyle: {
-    marginBottom: 30,
+    marginBottom: moderateVerticalScale(30),
     textAlign: 'center',
     color: Colors.white,
   },

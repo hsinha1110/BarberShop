@@ -13,7 +13,7 @@ export type AppStackParamList = {
   [Routes.HOME]: undefined;
   [Routes.BOOKING]: undefined;
   [Routes.PROFILE]: undefined;
-  [Routes.BOOKING_DETAILS]: undefined;
+  [Routes.BOOKING_DETAILS]: { item: any };
 };
 
 export type RootStackParamList = {
@@ -30,11 +30,21 @@ export interface PrimaryButtonProps {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
 }
-
+export interface Booking {
+  id: string;
+  serviceName: string;
+  date: string;
+  timeSlot: string;
+  amount: number;
+  status: string;
+  userId: string;
+}
 // Bottom Tabs
 export type BottomTabParamList = {
   Home: undefined;
   Booking: undefined;
   Profile: undefined;
 };
-
+export interface Props {
+  item: any;
+}

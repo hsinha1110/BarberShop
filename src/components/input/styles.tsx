@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { Colors } from '../../constants/Colors';
-import { moderateScale } from 'react-native-size-matters';
+import { moderateScale, scale } from 'react-native-size-matters';
 import { RFValue } from 'react-native-responsive-fontsize';
 
 const styles = StyleSheet.create({
@@ -27,11 +27,12 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     height: moderateScale(48),
-    fontSize: RFValue(12),
-    color: Colors.black,
+    fontSize: scale(12),
+    color: Colors.white,
     paddingVertical: moderateScale(10),
     includeFontPadding: false,
     textAlignVertical: 'center',
+    fontWeight: 'bold',
   },
   multiline: {
     height: 'auto',

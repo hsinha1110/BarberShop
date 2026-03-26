@@ -1,25 +1,24 @@
 import { StyleSheet } from 'react-native';
-import { RFValue } from 'react-native-responsive-fontsize';
 import { Colors } from '../../../constants/Colors';
-import { moderateScale } from 'react-native-size-matters';
+import { moderateScale, moderateVerticalScale, scale } from 'react-native-size-matters';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
   divider: {
-    marginVertical: RFValue(6),
+    marginVertical: scale(6),
   },
 
   dividerStyle: {
-    marginTop: RFValue(5),
+    marginTop: moderateVerticalScale(5),
   },
   title: {
     color: Colors.white,
     fontWeight: 'bold',
-    marginVertical: RFValue(5),
-    fontSize: RFValue(18),
-    marginTop: moderateScale(50),
+    marginVertical: moderateVerticalScale(5),
+    fontSize: scale(18),
+    marginTop: moderateVerticalScale(50),
     marginHorizontal: moderateScale(10),
     textTransform: 'uppercase',
   },

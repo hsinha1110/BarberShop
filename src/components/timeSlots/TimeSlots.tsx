@@ -3,8 +3,14 @@ import { View, FlatList, TouchableOpacity } from 'react-native';
 import CustomText from '../text/CustomText';
 import styles from './styles';
 import { Times } from '../../constants/Data';
-const TimeSlots = () => {
-  const [selected, setSelected] = useState<string | null>(null);
+
+const TimeSlots = ({ onSelectTime }) => {
+  const [selected, setSelected] = useState(null);
+
+  const handleSelect = time => {
+    setSelected(time);
+    onSelectTime && onSelectTime(time);
+  };
 
   return (
     <View>
@@ -22,7 +28,7 @@ const TimeSlots = () => {
           return (
             <TouchableOpacity
               style={[styles.timeBox, isSelected && styles.selectedTime]}
-              onPress={() => setSelected(item)}
+              onPress={() => handleSelect(item)}
             >
               <CustomText
                 style={[styles.timeText, isSelected && styles.selectedText]}

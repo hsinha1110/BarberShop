@@ -1,6 +1,10 @@
 import { StyleSheet } from 'react-native';
 import { Colors } from '../../../constants/Colors';
-import { RFValue } from 'react-native-responsive-fontsize';
+import {
+  moderateScale,
+  moderateVerticalScale,
+  scale,
+} from 'react-native-size-matters';
 
 const styles = StyleSheet.create({
   container: {
@@ -10,36 +14,35 @@ const styles = StyleSheet.create({
 
   header: {
     backgroundColor: Colors.jungle_green,
-    paddingTop: RFValue(50),
-    paddingBottom: RFValue(20),
-    paddingHorizontal: RFValue(15),
+    paddingTop: moderateScale(55),
+    paddingBottom: moderateScale(20),
+    paddingHorizontal: moderateScale(15),
   },
 
   greeting: {
     color: Colors.white,
     textTransform: 'uppercase',
-    fontSize: RFValue(14),
+    fontSize: scale(14),
   },
 
   name: {
     color: Colors.white,
     fontWeight: 'bold',
-    marginVertical: RFValue(5),
-    fontSize: RFValue(22),
+    fontSize: scale(22),
   },
 
   subtitle: {
     color: Colors.white,
-    marginTop: RFValue(5),
-    fontSize: RFValue(12),
+    marginTop: moderateVerticalScale(5),
+    fontSize: moderateVerticalScale(12),
   },
 
   divider: {
-    marginVertical: RFValue(6),
+    marginVertical: moderateVerticalScale(6),
   },
 
   dividerStyle: {
-    marginTop: RFValue(10),
+    marginTop: moderateVerticalScale(10),
   },
 
   body: {
@@ -49,8 +52,8 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
     backgroundColor: Colors.white,
-    padding: RFValue(10),
-    marginVertical: RFValue(6),
+    padding: moderateScale(10),
+    marginVertical: moderateVerticalScale(6),
 
     // Android
     elevation: 3,
@@ -63,45 +66,45 @@ const styles = StyleSheet.create({
   },
 
   imageWrapper: {
-    borderWidth: 2,
+    borderWidth: moderateScale(2),
     borderColor: Colors.jungle_green,
-    borderRadius: 12,
-    padding: RFValue(4),
-    marginRight: RFValue(12),
+    borderRadius: moderateScale(12),
+    padding: moderateScale(4),
+    marginRight: moderateScale(12),
     backgroundColor: Colors.white,
   },
 
   imageContainer: {
     backgroundColor: Colors.jungle_green,
-    height: RFValue(70),
-    width: RFValue(70),
+    height: moderateScale(70),
+    width: moderateScale(70),
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
   },
 
   image: {
-    width: RFValue(30),
-    height: RFValue(30),
+    width: moderateScale(30),
+    height: moderateScale(30),
     tintColor: Colors.white,
   },
 
   title: {
     fontWeight: 'bold',
-    fontSize: RFValue(15),
+    fontSize: scale(15),
     textTransform: 'uppercase',
-    marginBottom: RFValue(4),
+    marginBottom: moderateScale(4),
   },
 
   desc: {
     color: Colors.primary_black,
-    lineHeight: RFValue(16),
+    lineHeight: moderateScale(16),
   },
 
   servicesTitle: {
     textTransform: 'uppercase',
     fontWeight: 'bold',
-    fontSize: RFValue(16),
+    fontSize: scale(16),
   },
 });
 
