@@ -13,14 +13,14 @@ import { Routes } from '../../../constants/Routes';
 import auth from '@react-native-firebase/auth';
 import { isValidEmail } from '../../../utils/ValidationUtil';
 
-const LoginScreen = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const LoginScreen: React.FC = () => {
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
+  const [emailError, setEmailError] = useState<string>('');
+  const [passwordError, setPasswordError] = useState<string>('');
 
-  const validate = () => {
+  const validate = (): boolean => {
     let valid = true;
 
     setEmailError('');
@@ -42,7 +42,7 @@ const LoginScreen = () => {
     return valid;
   };
 
-  const handleLogin = async () => {
+  const handleLogin = async (): Promise<void> => {
     if (!validate()) return;
 
     try {
@@ -53,7 +53,6 @@ const LoginScreen = () => {
 
       console.log('Login success', userCredential.user);
 
-      // Navigate to home screen
       navigate(Routes.APP_STACK, { screen: Routes.HOME });
     } catch (error: any) {
       console.log('Login error:', error);
@@ -68,7 +67,7 @@ const LoginScreen = () => {
     }
   };
 
-  const handleSignUp = () => {
+  const handleSignUp = (): void => {
     navigate(Routes.AUTH_STACK, { screen: Routes.SIGN_UP });
   };
 
@@ -90,7 +89,7 @@ const LoginScreen = () => {
             leftIcon="mail-outline"
             value={email}
             error={emailError}
-            onChangeText={text => {
+            onChangeText={(text: string) => {
               setEmail(text);
               if (emailError) setEmailError('');
             }}
@@ -103,7 +102,7 @@ const LoginScreen = () => {
             leftIcon="lock-closed-outline"
             value={password}
             error={passwordError}
-            onChangeText={text => {
+            onChangeText={(text: string) => {
               setPassword(text);
               if (passwordError) setPasswordError('');
             }}

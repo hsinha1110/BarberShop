@@ -10,7 +10,7 @@ import { FONTS } from '../../../constants/Fonts';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#2736A3',
+    backgroundColor: Colors.primary_blue,
   },
 
   topDesign: {

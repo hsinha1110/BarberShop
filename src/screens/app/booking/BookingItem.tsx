@@ -2,12 +2,8 @@ import React from 'react';
 import { View, Image } from 'react-native';
 import styles from './BookingItemStyles';
 import { Services } from '../../../constants/Data';
-import { Booking } from '../../../types';
+import { Booking, Props } from '../../../types';
 import CustomText from '../../../components/text/CustomText';
-
-interface Props {
-  item: Booking;
-}
 
 const BookingItem: React.FC<Props> = ({ item }) => {
   const getServiceImage = (name: string) => {

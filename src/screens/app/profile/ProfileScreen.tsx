@@ -1,5 +1,6 @@
 import { View, Image, FlatList, Alert } from 'react-native';
 import React, { useEffect, useState } from 'react';
+
 import styles from './styles';
 import CustomText from '../../../components/text/CustomText';
 import { Colors } from '../../../constants/Colors';
@@ -11,12 +12,13 @@ import { moderateScale } from 'react-native-size-matters';
 
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import { ProfileDataItem } from '../../../types';
 
-const ProfileScreen = () => {
-  const [userName, setUserName] = useState('');
-  const [userEmail, setUserEmail] = useState('');
+const ProfileScreen: React.FC = () => {
+  const [userName, setUserName] = useState<string>('');
+  const [userEmail, setUserEmail] = useState<string>('');
 
-  const handleLogout = async () => {
+  const handleLogout = async (): Promise<void> => {
     try {
       await auth().signOut();
     } catch (error) {
@@ -25,13 +27,16 @@ const ProfileScreen = () => {
   };
 
   useEffect(() => {
-    const getUserData = async () => {
+    const getUserData = async (): Promise<void> => {
       try {
         const uid = auth().currentUser?.uid;
         if (!uid) return;
+
         const userDoc = await firestore().collection('users').doc(uid).get();
+
         if (userDoc.exists()) {
           const data = userDoc.data();
+
           setUserName(data?.fullName || '');
           setUserEmail(data?.email || '');
         }
@@ -39,10 +44,11 @@ const ProfileScreen = () => {
         console.log('User fetch error', error);
       }
     };
+
     getUserData();
   }, []);
 
-  const confirmDelete = () => {
+  const confirmDelete = (): void => {
     Alert.alert(
       'Delete Account',
       'This will permanently delete your account.',
@@ -53,16 +59,14 @@ const ProfileScreen = () => {
     );
   };
 
-  const deleteAccount = async () => {
+  const deleteAccount = async (): Promise<void> => {
     const uid = auth().currentUser?.uid;
 
     if (!uid) return;
 
     try {
-      // delete user profile
       await firestore().collection('users').doc(uid).delete();
 
-      // delete user bookings
       const snapshot = await firestore()
         .collection('Bookings')
         .where('userId', '==', uid)
@@ -76,12 +80,34 @@ const ProfileScreen = () => {
 
       await batch.commit();
 
-      // delete auth account
       await auth().currentUser?.delete();
     } catch (error) {
       console.log('Delete account error', error);
     }
   };
+
+  const renderItem = ({ item }: { item: ProfileDataItem }) => {
+    let value = '';
+
+    if (item.title === 'Name') value = userName;
+    if (item.title === 'Email') value = userEmail;
+
+    return (
+      <ProfileItem
+        icon={item.icon}
+        title={item.title}
+        value={value}
+        onPress={
+          item.title === 'Logout'
+            ? handleLogout
+            : item.title === 'Delete Account'
+            ? confirmDelete
+            : undefined
+        }
+      />
+    );
+  };
+
   return (
     <View style={styles.container}>
       <View style={{ height: 100, backgroundColor: Colors.jungle_green }}>
@@ -94,6 +120,7 @@ const ProfileScreen = () => {
         color={Colors.jungle_green}
         style={styles.dividerStyle}
       />
+
       <View style={styles.userContainer}>
         <Image source={Images.barber1} style={styles.userImage} />
       </View>
@@ -101,27 +128,7 @@ const ProfileScreen = () => {
       <FlatList
         data={profileData}
         keyExtractor={item => item.id}
-        renderItem={({ item }) => {
-          let value = '';
-
-          if (item.title === 'Name') value = userName;
-          if (item.title === 'Email') value = userEmail;
-
-          return (
-            <ProfileItem
-              icon={item.icon}
-              title={item.title}
-              value={value}
-              onPress={
-                item.title === 'Logout'
-                  ? handleLogout
-                  : item.title === 'Delete Account'
-                  ? confirmDelete
-                  : undefined
-              }
-            />
-          );
-        }}
+        renderItem={renderItem}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           paddingHorizontal: moderateScale(20),

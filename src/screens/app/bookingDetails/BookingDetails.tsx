@@ -1,36 +1,58 @@
 import React, { useEffect, useState } from 'react';
 import { View, Image, Alert } from 'react-native';
+
 import Header from '../../../components/header/Header';
 import styles from './styles';
+
 import { Images } from '../../../constants/Images';
 import CustomText from '../../../components/text/CustomText';
 import HorizontalCalendar from '../../../components/horizontalCalendar/HorizontalCalendar';
+
 import { Colors } from '../../../constants/Colors';
 import Divider from '../../../components/divider/Divider';
 import TimeSlots from '../../../components/timeSlots/TimeSlots';
 import CustomButton from '../../../components/button/CustomButton';
+
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+
 import { useStripe } from '@stripe/stripe-react-native';
+
 import { navigate } from '../../../utils/NavigationUtil';
 import { Routes } from '../../../constants/Routes';
-import { useRoute } from '@react-navigation/native';
 
-const BookingDetails = () => {
+import { useRoute, RouteProp } from '@react-navigation/native';
+
+type RootStackParamList = {
+  BookingDetails: {
+    item: {
+      title: string;
+      image: any;
+    };
+  };
+};
+
+type BookingDetailsRouteProp = RouteProp<RootStackParamList, 'BookingDetails'>;
+
+const BookingDetails: React.FC = () => {
   const { initPaymentSheet, presentPaymentSheet } = useStripe();
 
-  const route = useRoute();
-  const [userName, setUserName] = useState('');
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedTime, setSelectedTime] = useState(null);
-  const { item } = route.params as { item: any };
-  console.log(item);
+  const route = useRoute<BookingDetailsRouteProp>();
+  const { item } = route.params;
+
+  const [userName, setUserName] = useState<string>('');
+  const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  const [selectedTime, setSelectedTime] = useState<string | null>(null);
+
   const uid = auth().currentUser?.uid;
 
   useEffect(() => {
-    const getUserData = async () => {
+    const getUserData = async (): Promise<void> => {
       try {
+        if (!uid) return;
+
         const userDoc = await firestore().collection('users').doc(uid).get();
+
         if (userDoc.exists()) {
           setUserName(userDoc.data()?.fullName || '');
         }
@@ -39,20 +61,18 @@ const BookingDetails = () => {
       }
     };
 
-    if (uid) {
-      getUserData();
-    }
+    getUserData();
   }, [uid]);
 
-  const handleDateSelect = (date: any) => {
+  const handleDateSelect = (date: string): void => {
     setSelectedDate(date);
   };
 
-  const handleTimeSelect = (time: any) => {
+  const handleTimeSelect = (time: string): void => {
     setSelectedTime(time);
   };
 
-  //  CALL STRIPE SERVER
+  // CALL STRIPE SERVER
   const fetchPaymentSheetParams = async () => {
     const response = await fetch('http://192.168.1.41:3000/payment-sheet', {
       method: 'POST',
@@ -68,7 +88,7 @@ const BookingDetails = () => {
   };
 
   // INIT STRIPE
-  const initializePaymentSheet = async () => {
+  const initializePaymentSheet = async (): Promise<void> => {
     const { paymentIntent, ephemeralKey, customer } =
       await fetchPaymentSheetParams();
 
@@ -87,7 +107,7 @@ const BookingDetails = () => {
   };
 
   // OPEN PAYMENT
-  const openPaymentSheet = async () => {
+  const openPaymentSheet = async (): Promise<void> => {
     const { error } = await presentPaymentSheet();
 
     if (error) {
@@ -98,7 +118,7 @@ const BookingDetails = () => {
   };
 
   // SAVE BOOKING
-  const saveBooking = async () => {
+  const saveBooking = async (): Promise<void> => {
     await firestore().collection('Bookings').add({
       userId: uid,
       userName: userName,
@@ -127,7 +147,7 @@ const BookingDetails = () => {
     );
   };
 
-  const handleBookNow = async () => {
+  const handleBookNow = async (): Promise<void> => {
     if (!selectedDate || !selectedTime) {
       Alert.alert('Please select date and time');
       return;

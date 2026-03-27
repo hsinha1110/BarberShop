@@ -1,22 +1,29 @@
-import { FlatList, View, ScrollView } from 'react-native';
 import React, { useEffect, useState } from 'react';
+import { FlatList, View, ScrollView, ListRenderItem } from 'react-native';
+
 import styles from './styles';
 import CustomText from '../../../components/text/CustomText';
 import { Colors } from '../../../constants/Colors';
 import Divider from '../../../components/divider/Divider';
 import { Services } from '../../../constants/Data';
+
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import ServiceItem from './ServicesItem';
 
-const HomeScreen = () => {
-  const [userName, setUserName] = useState('');
+import ServiceItem from './ServicesItem';
+import { Service } from '../../../types';
+
+const HomeScreen: React.FC = () => {
+  const [userName, setUserName] = useState<string>('');
 
   useEffect(() => {
-    const getUserData = async () => {
+    const getUserData = async (): Promise<void> => {
       try {
         const uid = auth().currentUser?.uid;
+        if (!uid) return;
+
         const userDoc = await firestore().collection('users').doc(uid).get();
+
         if (userDoc.exists()) {
           setUserName(userDoc.data()?.fullName || '');
         }
@@ -24,8 +31,13 @@ const HomeScreen = () => {
         console.log('User fetch error', error);
       }
     };
+
     getUserData();
   }, []);
+
+  const renderItem: ListRenderItem<Service> = ({ item }) => {
+    return <ServiceItem item={item} />;
+  };
 
   return (
     <ScrollView style={styles.container}>
@@ -45,18 +57,21 @@ const HomeScreen = () => {
           Fresh fades, clean cuts,{'\n'}Your Style, just one tap away
         </CustomText>
       </View>
+
       <Divider
         width="100%"
         height={5}
         color={Colors.jungle_green}
         style={styles.divider}
       />
+
       {/* BODY */}
       <View style={styles.body}>
         <FlatList
           style={{ flex: 1 }}
           data={Services}
           keyExtractor={item => item.id}
+          renderItem={renderItem}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.containerStyle}
           ListHeaderComponent={() => (
@@ -80,7 +95,6 @@ const HomeScreen = () => {
               style={styles.dividerStyle}
             />
           )}
-          renderItem={({ item }) => <ServiceItem item={item} />}
         />
       </View>
     </ScrollView>

@@ -30,15 +30,7 @@ export interface PrimaryButtonProps {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
 }
-export interface Booking {
-  id: string;
-  serviceName: string;
-  date: string;
-  timeSlot: string;
-  amount: number;
-  status: string;
-  userId: string;
-}
+
 // Bottom Tabs
 export type BottomTabParamList = {
   Home: undefined;
@@ -46,5 +38,31 @@ export type BottomTabParamList = {
   Profile: undefined;
 };
 export interface Props {
-  item: any;
+  item: Booking;
 }
+
+export type Service = {
+  id: string;
+  title: string;
+  description: string;
+  image: any;
+};
+
+export type ServiceItemProps = {
+  item: Service;
+};
+
+export type Booking = {
+  id: string;
+  serviceName: string;
+  date: string;
+  timeSlot: string;
+  amount: number;
+  userId: string;
+};
+
+export type ProfileDataItem = {
+  id: string;
+  title: string;
+  icon: string;
+};

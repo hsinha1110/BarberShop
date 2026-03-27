@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2025-02-24.acacia', // ✅ match everywhere
+  apiVersion: '2025-02-24.acacia', 
 });
 
 app.post('/payment-sheet', async (req, res) => {
@@ -19,7 +19,7 @@ app.post('/payment-sheet', async (req, res) => {
 
     const ephemeralKey = await stripe.ephemeralKeys.create(
       { customer: customer.id },
-      { apiVersion: '2025-02-24.acacia' }, // ✅ same version
+      { apiVersion: '2025-02-24.acacia' }, 
     );
 
     const paymentIntent = await stripe.paymentIntents.create({
@@ -27,7 +27,6 @@ app.post('/payment-sheet', async (req, res) => {
       currency: 'inr',
       customer: customer.id,
       automatic_payment_methods: {
-        // ✅ replaces payment_method_types
         enabled: true,
       },
     });
@@ -39,7 +38,7 @@ app.post('/payment-sheet', async (req, res) => {
     });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: err.message }); // ✅ better error response
+    res.status(500).json({ error: err.message }); 
   }
 });
 

@@ -1,14 +1,19 @@
 import React from 'react';
 import { View, Image, Pressable } from 'react-native';
+
 import { navigate } from '../../../utils/NavigationUtil';
 import { Routes } from '../../../constants/Routes';
+
 import CustomText from '../../../components/text/CustomText';
-import { Props } from '../../../types';
+
+import { ServiceItemProps } from '../../../types';
+
 import styles from './ServicesItemStyles';
 
-const ServiceItem: React.FC<Props> = ({ item }) => {
+const ServiceItem: React.FC<ServiceItemProps> = ({ item }) => {
   return (
     <Pressable
+      style={styles.card}
       onPress={() => {
         navigate(
           Routes.APP_STACK as never,
@@ -18,7 +23,6 @@ const ServiceItem: React.FC<Props> = ({ item }) => {
           } as never,
         );
       }}
-      style={styles.card}
     >
       <View style={styles.imageWrapper}>
         <View style={styles.imageContainer}>

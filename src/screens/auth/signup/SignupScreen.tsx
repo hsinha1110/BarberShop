@@ -1,26 +1,30 @@
 import React, { useState } from 'react';
 import { View, Pressable, Image } from 'react-native';
 import styles from './styles';
+
 import CustomText from '../../../components/text/CustomText';
 import CustomInput from '../../../components/input/CustomInput';
 import CustomButton from '../../../components/button/CustomButton';
+
 import { Images } from '../../../constants/Images';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
+
 import { isValidEmail } from '../../../utils/ValidationUtil';
 import { goBack } from '../../../utils/NavigationUtil';
 
-const SignupScreen = () => {
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [nameError, setNameError] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [confirmPasswordError, setConfirmPasswordError] = useState('');
+const SignupScreen: React.FC = () => {
+  const [fullName, setFullName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [confirmPassword, setConfirmPassword] = useState<string>('');
 
-  const validate = () => {
+  const [nameError, setNameError] = useState<string>('');
+  const [emailError, setEmailError] = useState<string>('');
+  const [passwordError, setPasswordError] = useState<string>('');
+  const [confirmPasswordError, setConfirmPasswordError] = useState<string>('');
+
+  const validate = (): boolean => {
     let valid = true;
 
     setNameError('');
@@ -63,7 +67,7 @@ const SignupScreen = () => {
     return valid;
   };
 
-  const handleSignUp = async () => {
+  const handleSignUp = async (): Promise<void> => {
     if (!validate()) return;
 
     try {
@@ -106,7 +110,7 @@ const SignupScreen = () => {
           leftIcon="person-outline"
           value={fullName}
           error={nameError}
-          onChangeText={text => {
+          onChangeText={(text: string) => {
             setFullName(text);
             if (nameError) setNameError('');
           }}
@@ -119,7 +123,7 @@ const SignupScreen = () => {
           leftIcon="mail-outline"
           value={email}
           error={emailError}
-          onChangeText={text => {
+          onChangeText={(text: string) => {
             setEmail(text);
             if (emailError) setEmailError('');
           }}
@@ -132,7 +136,7 @@ const SignupScreen = () => {
           leftIcon="lock-closed-outline"
           value={password}
           error={passwordError}
-          onChangeText={text => {
+          onChangeText={(text: string) => {
             setPassword(text);
             if (passwordError) setPasswordError('');
           }}
@@ -145,7 +149,7 @@ const SignupScreen = () => {
           leftIcon="lock-closed-outline"
           value={confirmPassword}
           error={confirmPasswordError}
-          onChangeText={text => {
+          onChangeText={(text: string) => {
             setConfirmPassword(text);
             if (confirmPasswordError) setConfirmPasswordError('');
           }}
@@ -161,8 +165,9 @@ const SignupScreen = () => {
 
         <View style={styles.signUpStyle}>
           <CustomText style={styles.alreadyUserTitle}>
-            Already have an account ?{' '}
+            Already have an account ?
           </CustomText>
+
           <Pressable onPress={goBack}>
             <CustomText style={styles.loginTitle}>Login</CustomText>
           </Pressable>
