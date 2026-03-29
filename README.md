@@ -137,5 +137,3 @@ React Native Developer (3+ Years Experience)
 GitHub:
 https://github.com/hsinha1110
 
-Apk 
-https://drive.google.com/file/d/10Y9s3tZeInFM4gaSeMP-RpnqfJt0zNaO/view?usp=sharing
