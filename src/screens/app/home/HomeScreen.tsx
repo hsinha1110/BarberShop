@@ -65,7 +65,6 @@ const HomeScreen: React.FC = () => {
         style={styles.divider}
       />
 
-      {/* BODY */}
       <View style={styles.body}>
         <FlatList
           style={{ flex: 1 }}

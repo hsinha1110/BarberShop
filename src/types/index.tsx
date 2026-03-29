@@ -18,6 +18,8 @@ export type AppStackParamList = {
 };
 
 export type RootStackParamList = {
+  [Routes.HOME]: undefined;
+  [Routes.BOOKING_DETAILS]: undefined;
   [Routes.SPLASH]: undefined;
 
   [Routes.AUTH_STACK]: NavigatorScreenParams<AuthStackParamList>;

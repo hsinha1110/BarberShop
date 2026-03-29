@@ -78,7 +78,7 @@ export default StyleSheet.create({
     backgroundColor: Colors.primary_orange,
     width: '30%',
     borderRadius: moderateScale(40),
-    marginTop: moderateScale(20),
+    marginTop: moderateScale(5),
   },
   btnTitle: {
     fontSize: scale(16),

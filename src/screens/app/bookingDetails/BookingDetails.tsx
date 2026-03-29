@@ -57,9 +57,12 @@ const BookingDetails: React.FC = () => {
 
   // CALL STRIPE SERVER
   const fetchPaymentSheetParams = async () => {
-    const response = await fetch('http://192.168.1.34:3000/payment-sheet', {
-      method: 'POST',
-    });
+    const response = await fetch(
+      'https://barbershop-w5cn.onrender.com/payment-sheet',
+      {
+        method: 'POST',
+      },
+    );
 
     const { paymentIntent, ephemeralKey, customer } = await response.json();
 

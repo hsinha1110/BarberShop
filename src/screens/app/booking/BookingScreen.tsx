@@ -48,13 +48,11 @@ const BookingScreen: React.FC = () => {
     }
   };
 
-  // find service image
   const getServiceImage = (name: string) => {
     const service = Services.find(s => s.title === name);
     return service?.image;
   };
 
-  // Loader
   if (loading) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
