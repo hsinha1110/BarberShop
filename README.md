@@ -1,98 +1,141 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 💈 Barber Shop Booking App
 
-# Getting Started
+A modern **React Native mobile application** that allows users to book barber services, select time slots, and make secure payments using Stripe.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+---
 
-## Step 1: Start Metro
+## 🚀 Features
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+* 🔐 Firebase Authentication (Login / Sign Up)
+* 🔁 Forgot Password with Firebase
+* 👤 Profile Screen
+* 🏠 Home Screen with Services
+* 📅 Horizontal Calendar for Date Selection
+* ⏰ Time Slot Booking
+* 💳 Stripe Payment Integration
+* ☁️ Firebase Firestore Database
+* 📱 Works on both **Android and iOS**
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+---
 
-```sh
-# Using npm
-npm start
+## 🛠 Tech Stack
 
-# OR using Yarn
-yarn start
+* React Native CLI
+* TypeScript
+* Firebase Authentication
+* Firebase Firestore
+* Stripe Payment
+* Express.js (Backend)
+* Render Deployment
+
+---
+
+## 📂 Project Structure
+
+```
+BarberShop
+│
+├── android
+├── ios
+├── src
+│   ├── components
+│   ├── screens
+│   ├── constants
+│   ├── navigation
+│   ├── utils
+│   └── types
+│
+├── stripe-server (Backend)
+│   ├── server.js
+│   └── package.json
+│
+├── App.tsx
+└── package.json
 ```
 
-## Step 2: Build and run your app
+---
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+## ⚙️ Installation
 
-### Android
+Clone the repository:
 
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+```
+git clone https://github.com/hsinha1110/BarberShop.git
 ```
 
-### iOS
+Go to project folder:
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+```
+cd BarberShop
 ```
 
-Then, and every time you update your native dependencies, run:
+Install dependencies:
 
-```sh
-bundle exec pod install
+```
+npm install
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+Run the project:
 
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
+```
+npx react-native run-android
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+or
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+```
+npx react-native run-ios
+```
 
-## Step 3: Modify your app
+---
 
-Now that you have successfully run the app, let's make changes!
+## 🔧 Backend Setup (Stripe Server)
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+Navigate to backend folder:
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+```
+cd stripe-server
+```
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+Install dependencies:
 
-## Congratulations! :tada:
+```
+npm install
+```
 
-You've successfully run and modified your React Native App. :partying_face:
+Start server:
 
-### Now what?
+```
+node server.js
+```
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+---
 
-# Troubleshooting
+## 🌐 Deployment
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+Backend deployed using **Render**
 
-# Learn More
+---
 
-To learn more about React Native, take a look at the following resources:
+## 📸 Screens
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
-# BarberShop
+* Login Screen
+* Signup Screen
+* Home Screen
+* Booking Screen
+* Payment Screen
+* Profile Screen
+
+---
+
+## 👨‍💻 Author
+
+**Himanshu Sinha**
+
+React Native Developer (3+ Years Experience)
+
+GitHub:
+https://github.com/hsinha1110
+
+Apk 
+https://drive.google.com/file/d/10Y9s3tZeInFM4gaSeMP-RpnqfJt0zNaO/view?usp=sharing
