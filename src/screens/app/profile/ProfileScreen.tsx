@@ -9,7 +9,6 @@ import { Images } from '../../../constants/Images';
 import { profileData } from '../../../constants/Data';
 import ProfileItem from './ProfileItem';
 import { moderateScale } from 'react-native-size-matters';
-
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import { ProfileDataItem } from '../../../types';

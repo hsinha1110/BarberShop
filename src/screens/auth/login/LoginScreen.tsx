@@ -71,6 +71,10 @@ const LoginScreen: React.FC = () => {
     navigate(Routes.AUTH_STACK, { screen: Routes.SIGN_UP });
   };
 
+  const handleForgot = (): void => {
+    navigate(Routes.AUTH_STACK, { screen: Routes.FORGOT });
+  };
+
   return (
     <View style={styles.container}>
       <View>
@@ -109,9 +113,11 @@ const LoginScreen: React.FC = () => {
             containerStyle={styles.inputStyle}
           />
 
-          <CustomText style={styles.forgotTextStyle}>
-            Forgot Password?
-          </CustomText>
+          <Pressable onPress={handleForgot}>
+            <CustomText style={styles.forgotTextStyle}>
+              Forgot Password?
+            </CustomText>
+          </Pressable>
 
           <CustomButton
             title="Login"
@@ -125,12 +131,6 @@ const LoginScreen: React.FC = () => {
 
             <Pressable onPress={handleSignUp}>
               <CustomText style={styles.signUpTitle}>SignUp?</CustomText>
-            </Pressable>
-          </View>
-
-          <View style={styles.adminStyle}>
-            <Pressable>
-              <CustomText style={styles.signUpTitle}>Admin Panel</CustomText>
             </Pressable>
           </View>
         </View>

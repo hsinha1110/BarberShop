@@ -6,28 +6,28 @@ export const Services = [
     title: 'Hair Cut',
     description:
       'Professional haircut with modern styles to enhance your overall look',
-    image: Images.scissors,
+    image: require('../assets/images/scissors.png'),
   },
   {
     id: '2',
     title: 'Shaving',
     description:
       'Smooth and clean shaving experience with premium quality products',
-    image: Images.razor,
+    image: require('../assets/images/razor.png'),
   },
   {
     id: '3',
     title: 'CreamBath',
     description:
       'Relaxing cream bath treatment for healthy shiny and nourished hair',
-    image: Images.lotion,
+    image: require('../assets/images/lotion.png'),
   },
   {
     id: '4',
     title: 'Hair Coloring',
     description:
       'Trendy hair coloring services to give you a bold stylish appearance',
-    image: Images.hair_color,
+    image: require('../assets/images/hair-color.png'),
   },
 ];
 

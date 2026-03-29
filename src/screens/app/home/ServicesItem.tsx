@@ -1,13 +1,9 @@
 import React from 'react';
 import { View, Image, Pressable } from 'react-native';
-
 import { navigate } from '../../../utils/NavigationUtil';
 import { Routes } from '../../../constants/Routes';
-
 import CustomText from '../../../components/text/CustomText';
-
 import { ServiceItemProps } from '../../../types';
-
 import styles from './ServicesItemStyles';
 
 const ServiceItem: React.FC<ServiceItemProps> = ({ item }) => {

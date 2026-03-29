@@ -6,6 +6,7 @@ export const Routes = {
   PROFILE: 'Profile',
   LOGIN: 'Login',
   SIGN_UP: 'Signup',
+  FORGOT: 'ForgotPassword',
   AUTH_STACK: 'AuthStack',
   APP_STACK: 'AppStack',
 } as const;

@@ -1,12 +1,13 @@
 import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 import { Routes } from '../constants/Routes';
 
-import { NavigatorScreenParams } from '@react-navigation/native';
+import { NavigatorScreenParams, RouteProp } from '@react-navigation/native';
 
 export type AuthStackParamList = {
   [Routes.SPLASH]: undefined;
   [Routes.LOGIN]: undefined;
   [Routes.SIGN_UP]: undefined;
+  [Routes.FORGOT]: undefined;
 };
 
 export type AppStackParamList = {
@@ -66,3 +67,15 @@ export type ProfileDataItem = {
   title: string;
   icon: string;
 };
+export type RootsStackParamList = {
+  BookingDetails: {
+    item: {
+      title: string;
+      image: any;
+    };
+  };
+};
+export type BookingDetailsRouteProp = RouteProp<
+  RootsStackParamList,
+  'BookingDetails'
+>;

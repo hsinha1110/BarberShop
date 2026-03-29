@@ -1,38 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { View, Image, Alert } from 'react-native';
-
 import Header from '../../../components/header/Header';
 import styles from './styles';
-
 import { Images } from '../../../constants/Images';
 import CustomText from '../../../components/text/CustomText';
 import HorizontalCalendar from '../../../components/horizontalCalendar/HorizontalCalendar';
-
 import { Colors } from '../../../constants/Colors';
 import Divider from '../../../components/divider/Divider';
 import TimeSlots from '../../../components/timeSlots/TimeSlots';
 import CustomButton from '../../../components/button/CustomButton';
-
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-
 import { useStripe } from '@stripe/stripe-react-native';
-
 import { navigate } from '../../../utils/NavigationUtil';
 import { Routes } from '../../../constants/Routes';
-
-import { useRoute, RouteProp } from '@react-navigation/native';
-
-type RootStackParamList = {
-  BookingDetails: {
-    item: {
-      title: string;
-      image: any;
-    };
-  };
-};
-
-type BookingDetailsRouteProp = RouteProp<RootStackParamList, 'BookingDetails'>;
+import { useRoute } from '@react-navigation/native';
+import { BookingDetailsRouteProp } from '../../../types';
 
 const BookingDetails: React.FC = () => {
   const { initPaymentSheet, presentPaymentSheet } = useStripe();
@@ -74,7 +57,7 @@ const BookingDetails: React.FC = () => {
 
   // CALL STRIPE SERVER
   const fetchPaymentSheetParams = async () => {
-    const response = await fetch('http://192.168.1.41:3000/payment-sheet', {
+    const response = await fetch('http://192.168.1.34:3000/payment-sheet', {
       method: 'POST',
     });
 
@@ -123,7 +106,6 @@ const BookingDetails: React.FC = () => {
       userId: uid,
       userName: userName,
       barberName: 'John Doe',
-
       serviceName: item.title,
       serviceImage: item.image,
 
@@ -165,16 +147,13 @@ const BookingDetails: React.FC = () => {
     <View style={styles.container}>
       <View style={styles.headerArea}>
         <Header />
-
         <View style={styles.useContainer}>
           <Image source={Images.barber1} style={styles.userImage} />
-
           <View style={styles.userInfo}>
             <CustomText style={styles.title}>JOHN DOE</CustomText>
             <CustomText style={styles.subTitle}>Barberman</CustomText>
           </View>
         </View>
-
         <CustomText style={styles.slotTitle}>CHOOSE YOUR SLOT</CustomText>
         <HorizontalCalendar onSelectDate={handleDateSelect} />
       </View>

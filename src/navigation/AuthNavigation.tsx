@@ -12,6 +12,10 @@ const AuthNavigation: React.FC = () => {
       <Stack.Screen name={Routes.SPLASH} component={Screens.SplashScreen} />
       <Stack.Screen name={Routes.LOGIN} component={Screens.LoginScreen} />
       <Stack.Screen name={Routes.SIGN_UP} component={Screens.SignUpScreen} />
+      <Stack.Screen
+        name={Routes.FORGOT}
+        component={Screens.ForgotPasswordScreen}
+      />
     </Stack.Navigator>
   );
 };
