@@ -130,10 +130,12 @@ Backend deployed using **Render**
 
 ## 👨‍💻 Author
 
-**Himanshu Sinha**
+** Himanshu Sinha **
 
 React Native Developer (3+ Years Experience)
 
 GitHub:
 https://github.com/hsinha1110
 
+Apk
+https://drive.google.com/file/d/15reoneeCAOJMmvJ1FcwxucoIczpLQO3-/view?usp=sharing
